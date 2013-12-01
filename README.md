@@ -12,5 +12,5 @@ cd into the repo and run the setup script:
 cd vim
 bash setup.sh
 ```
-All your .vim* and .gvim* files will end up in an vim.old folder inside the folder you cloned this
-into and will be replaced by symlinks to this repo.
+All your .vim* and .gvim* files will end up in an vim.old folder inside the `vim` folder you cloned
+and will be replaced by symlinks to this repo.
