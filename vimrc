@@ -309,6 +309,9 @@ nnoremap yL y$
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
+" Edit vimrc and expand symlinks to the actual folder
+nnoremap <leader>vimrc :e <C-r>=resolve(expand("~/.vimrc"))<CR><CR>
+
 " Easier movement between splits
 noremap <C-J> <C-W>j<C-W>_
 noremap <C-K> <C-W>k<C-W>_
