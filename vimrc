@@ -260,6 +260,8 @@ iabbrev :patience: ┬─┬ ノ(゜-゜ノ)
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 autocmd! bufwritepost .vimrc :CSApprox
+autocmd! bufwritepost vimrc source ~/.vimrc
+autocmd! bufwritepost vimrc :CSApprox
 " Current line number row will have same background color in relative mode
 
 
