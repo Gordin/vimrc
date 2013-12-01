@@ -64,6 +64,13 @@ let g:CSApprox_hook_post = ['highlight Normal ctermbg=NONE ctermfg=NONE',
                           \ 'highlight clear LineNr'
                           \]
 
+""" Ctrl + P """
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+map <c-a-p> :CtrlPMixed<CR>
+Bundle 'kien/ctrlp.vim'
+
+
 filetype plugin indent on
 
 " Brief help
