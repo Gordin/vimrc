@@ -47,6 +47,8 @@ let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 " Colors for Signify symbols are defined in CSApprox_hook_post
 
 """ Colorscheme Approximation """
+" This transforms colorschemes to terminal colorschemes
+" The ctermbg=NONE hooks make backgrounds transparent in terminals
 Bundle 'godlygeek/csapprox'
 let g:CSApprox_hook_post = ['highlight Normal ctermbg=NONE ctermfg=NONE',
                           \ 'highlight LineNr ctermbg=NONE ctermfg=NONE',
