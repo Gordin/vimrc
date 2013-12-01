@@ -295,7 +295,6 @@ nnoremap <leader>S :%s/
 " Faster Esc
 inoremap jk <esc>
 
-
 " use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
 " (it will prompt for sudo password when writing)
 cmap w!! w !sudo tee % >/dev/null
@@ -317,10 +316,10 @@ nnoremap Y y$
 nnoremap <leader>vimrc :e <C-r>=resolve(expand("~/.vimrc"))<CR><CR>
 
 " Easier movement between splits
-noremap <C-J> <C-W>j<C-W>_
-noremap <C-K> <C-W>k<C-W>_
-noremap <C-L> <C-W>l<C-W>_
-noremap <C-H> <C-W>h<C-W>_
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-L> <C-W>l
+noremap <C-H> <C-W>h
 
 " Wrap selections in Parenthesis/bracket
 vnoremap <leader>() <esc>`>a)<esc>`<i(<esc>
