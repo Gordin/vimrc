@@ -42,8 +42,9 @@ Bundle 'chrisbra/csv.vim'
 
 """ Signify """
 Bundle 'mhinz/vim-signify'
-" highlight lines in Sy and vimdiff etc.)
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
+let g:signify_mapping_next_hunk = '<leader>gj'
+let g:signify_mapping_prev_hunk = '<leader>gk'
 " Colors for Signify symbols are defined in CSApprox_hook_post
 
 """ Colorscheme Approximation """
