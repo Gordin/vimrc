@@ -160,6 +160,8 @@ set wildmenu            " Completion for :Ex mode. Show list instead of just com
 set wildmode=full       " Command <Tab> completion, list matches, then longest common part, then all.
 set wildchar=<tab>      " Make sure Tab starts wildmode
 set wildignorecase      " ignore case in wildmode
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
