@@ -103,7 +103,7 @@ set nospell                     " disable spellchecking on startup
 set foldlevelstart=0
 set foldmethod=indent           " Fold automatically based on indentation level
 
-" Space to toggle folds.
+" Space to toggle folds. A toggles recursively until line of cursor is unfolded
 nnoremap <Space> zA
 vnoremap <Space> zA
 
@@ -111,19 +111,19 @@ au FileType c setlocal foldmethod=syntax    " Fold based on syntax in C files
 
 
 """ Looks """
-set t_Co=256
-set background=dark
-colorscheme molokai
-set noshowmode  " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set showcmd     " Show partially entered commands in the statusline
+set t_Co=256                    " Tell vim that our Terminal has 256 Colors
+set background=dark             " Tell vim that our background is dark
+colorscheme molokai             " Select cholorscheme
+set noshowmode                  " Hide the mode text as airline already shows this
+set showcmd                     " Show partially entered commands in the statusline
 
-set laststatus=2
+set laststatus=2                " Always show the statusline
 
 syntax on                       " Syntax highlighting
 set number                      " Show line numbers
 set ruler                       " Show the line and column number of the cursor position,
 set cursorline                  " Highlight the line with the cursor
-set mousehide                   " Hide the mouse cursor while typing
+set mousehide                   " Hide the mouse cursor while typing (works only in gvim?)
 
 set showmatch                   " Highlight matching brackets when a pair is closed
 
@@ -189,7 +189,7 @@ set gdefault            " substitutions have the g (all matches) flag by default
 nnoremap H :tabprevious<CR>
 nnoremap L :tabnext<CR>
 
-" go down or up 1 visual line on wrapped lines instead of actual line
+" go down or up 1 visual line on wrapped lines instead of line of file
 noremap j gj
 noremap k gk
 
@@ -199,7 +199,7 @@ set smartcase           " Be case sensitive when capital letters are used
 set incsearch           " start searching while typing
 set hlsearch
 
-" Toggle search-highlights with ,/
+" Toggle search-highlights with <leader>/
 nmap <silent> <leader>/ :set invhlsearch<CR>
 
 " Automatically turn hlsearch on again when you search or go through results
@@ -215,6 +215,7 @@ nnoremap # #<c-o>
 nnoremap g# g#<c-o>
 
 " In visual mode press * or # to search for the current selection
+" selections will be found inside other words, even if a whole word is selected
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
