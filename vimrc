@@ -37,6 +37,10 @@ Bundle 'vim-scripts/sessionman.vim'
 """ Vim Colors (Colorschemes) """
 Bundle 'spf13/vim-colors'
 
+""" TagBar """
+Bundle 'majutsushi/tagbar'
+
+
 """ CSV """
 Bundle 'chrisbra/csv.vim'
 
