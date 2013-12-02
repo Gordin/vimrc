@@ -39,6 +39,14 @@ Bundle 'spf13/vim-colors'
 """ TagBar """
 Bundle 'majutsushi/tagbar'
 
+""" Easymotion """
+Bundle 'Lokaltog/vim-easymotion'
+
+""" MatchTagAlways and matchit """
+" This highlights enclosing/matching tags in HTML and XML
+Bundle 'Valloric/MatchTagAlways'
+" This allows % to jump between open and closing tags
+Bundle 'matchit.zip'
 
 """ CSV """
 Bundle 'chrisbra/csv.vim'
