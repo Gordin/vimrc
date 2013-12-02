@@ -40,6 +40,7 @@ Bundle 'spf13/vim-colors'
 Bundle 'majutsushi/tagbar'
 
 """ Easymotion """
+let g:EasyMotion_leader_key = '<Leader>'
 Bundle 'Lokaltog/vim-easymotion'
 
 """ MatchTagAlways and matchit """
