@@ -49,6 +49,13 @@ Bundle 'Valloric/MatchTagAlways'
 " This allows % to jump between open and closing tags
 Bundle 'matchit.zip'
 
+""" UltiSnips and Snippets """
+let g:UltiSnipsExpandTrigger =          '<leader><tab>'
+let g:UltiSnipsListSnippets =           '<leader><c-tab>'
+let g:UltiSnipsJumpForwardTrigger =     '<leader><c-j>'
+let g:UltiSnipsJumpBackwardTrigger =    '<leader><c-k>'
+Bundle 'SirVer/ultisnips'
+
 """ CSV """
 Bundle 'chrisbra/csv.vim'
 
