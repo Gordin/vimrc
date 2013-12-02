@@ -33,7 +33,6 @@ Bundle 'scrooloose/nerdcommenter'
 """ Session Manager """
 Bundle 'vim-scripts/sessionman.vim'
 
-
 """ Vim Colors (Colorschemes) """
 Bundle 'spf13/vim-colors'
 
@@ -277,7 +276,6 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 autocmd! bufwritepost .vimrc :CSApprox
 autocmd! bufwritepost vimrc source ~/.vimrc
 autocmd! bufwritepost vimrc :CSApprox
-" Current line number row will have same background color in relative mode
 
 
 " Instead of reverting the cursor to the last position in the buffer, we
