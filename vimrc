@@ -80,6 +80,11 @@ let g:CSApprox_hook_post = ['highlight Normal ctermbg=NONE ctermfg=NONE',
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 map <c-a-p> :CtrlPMixed<CR>
+" Sane Ignore For ctrlp
+let g:ctrlp_custom_ignore = {
+\ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
+\ 'file': '\.exe$\|\.so$\|\.dat$'
+\ }
 Bundle 'kien/ctrlp.vim'
 
 
