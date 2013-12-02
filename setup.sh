@@ -14,3 +14,7 @@ cd ycm_build &&
 # Enable clang completion
 cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/cpp -DUSE_SYSTEM_LIBCLANG=ON &&
 make ycm_support_libs
+
+# Install node libs for tern
+cd ~/.vim/bundle/tern_for_vim &&
+npm install

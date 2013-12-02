@@ -59,6 +59,9 @@ Bundle 'SirVer/ultisnips'
 """ You Complete Me """
 Bundle 'Valloric/YouCompleteMe'
 
+""" Tern for Vim """
+Bundle 'marijnh/tern_for_vim'
+
 """ CSV """
 Bundle 'chrisbra/csv.vim'
 
