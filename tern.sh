@@ -1,0 +1,4 @@
+#!/bin/bash
+# Install node libs for tern
+cd ~/.vim/bundle/tern_for_vim &&
+npm install
