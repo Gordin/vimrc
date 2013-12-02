@@ -56,6 +56,9 @@ let g:UltiSnipsJumpForwardTrigger =     '<leader><c-j>'
 let g:UltiSnipsJumpBackwardTrigger =    '<leader><c-k>'
 Bundle 'SirVer/ultisnips'
 
+""" You Complete Me """
+Bundle 'Valloric/YouCompleteMe'
+
 """ CSV """
 Bundle 'chrisbra/csv.vim'
 
