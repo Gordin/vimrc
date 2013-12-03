@@ -239,10 +239,29 @@ nnoremap <silent> n :set hlsearch<CR>n
 nnoremap <silent> N :set hlsearch<CR>N
 
 " Stay on the selected word when selecting a word with * or # to search for
-nnoremap * *<c-o>
-nnoremap g* g*<c-o>
-nnoremap # #<c-o>
-nnoremap g# g#<c-o>
+nnoremap * :call SavePos()<CR>*:call RestorePos()<CR>
+nnoremap g* :call SavePos()<CR>g*:call RestorePos()<CR>
+nnoremap # :call SavePos()<CR>#:call RestorePos()<CR>
+nnoremap g# :call SavePos()<CR>g#:call RestorePos()<CR>
+
+function! SavePos()
+  " Save the current cursor position
+  let g:save_cursor = getpos(".")
+  " Save the window position
+  set lazyredraw
+  normal !H
+  let g:save_window = getpos(".")
+  call setpos('.', g:save_cursor)
+endfunction
+
+function! RestorePos()
+  " Restore the window position
+  call setpos('.', g:save_window)
+  normal zt
+  " Restore the cursor position
+  call setpos('.', g:save_cursor)
+  set nolazyredraw
+endfunction
 
 " In visual mode press * or # to search for the current selection
 " selections will be found inside other words, even if a whole word is selected
