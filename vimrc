@@ -28,6 +28,9 @@ Bundle 'scrooloose/nerdtree'
 """ Syntastic """
 Bundle 'scrooloose/syntastic'
 
+""" DelimitMate """
+Bundle "Raimondi/delimitMate"
+
 """ NerdCommenter """
 Bundle 'scrooloose/nerdcommenter'
 
