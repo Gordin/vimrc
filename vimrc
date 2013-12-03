@@ -43,6 +43,9 @@ Bundle 'spf13/vim-colors'
 """ TagBar """
 Bundle 'majutsushi/tagbar'
 
+""" CoffeeScript """
+Bundle 'kchmck/vim-coffee-script'
+
 """ Easymotion """
 let g:EasyMotion_leader_key = '<Leader>'
 Bundle 'Lokaltog/vim-easymotion'
