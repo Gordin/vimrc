@@ -306,9 +306,9 @@ set shiftwidth=4        " shift text by 4 spaces with autoindent or << / >>
 set softtabstop=4       " Use shiftwidth als visible width of tabs
 set expandtab           " expands <tab> to spaces
 set nowrap              " disables wrapping text at the end of lines
-set textwidth=99        " maximum witd of a line is 85
 set formatoptions+=qrn12        " Set formatting options
-set colorcolumn=+1
+"set textwidth=99        " maximum with of a line is 85
+"set colorcolumn=+1
 
 """ Abbreviations """
 iabbrev :ldis: ಠ_ಠ
