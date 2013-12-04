@@ -132,7 +132,7 @@ let mapleader = ","
 let maplocalleader = "\\"
 
 """ Spellchecking """
-set spelllang=de,en             " german and english spellchecking
+set spelllang=de_20,en          " german and english spellchecking
 set nospell                     " disable spellchecking on startup
 
 
