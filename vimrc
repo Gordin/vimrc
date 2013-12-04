@@ -204,7 +204,7 @@ set mouse=a             " Automatically enable mouse usage
 set hidden              " allow to switch buffers without saving
 
 set wildmenu            " Completion for :Ex mode. Show list instead of just completing
-set wildmode=full       " Command <Tab> completion, list matches, then longest common part, then all.
+set wildmode=longest:full,full       " Command <Tab> completion, Show all matches, cycle through with <tab>
 set wildchar=<tab>      " Make sure Tab starts wildmode
 set wildignorecase      " ignore case in wildmode
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
