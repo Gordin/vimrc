@@ -10,6 +10,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 """ Fugitive """
+command! Gpush Git push
+command! Gpull Git pull
 Bundle 'tpope/vim-fugitive'
 
 """ Easymotion """
