@@ -410,13 +410,5 @@ noremap <C-K> <C-W>k
 noremap <C-L> <C-W>l
 noremap <C-H> <C-W>h
 
-" Wrap selections in Parenthesis/bracket
-vnoremap () <esc>`>a)<esc>`<i(<esc>
-vnoremap [] <esc>`>a]<esc>`<i[<esc>
-vnoremap {} <esc>`>a}<esc>`<i{<esc>
-vnoremap <> <esc>`>a><esc>`<i<<esc>
-vnoremap '' <esc>`>a'<esc>`<i'<esc>
-vnoremap "" <esc>`>a"<esc>`<i"<esc>
-
 set pastetoggle=<F12>     " Toggle paste with <F12>
 
