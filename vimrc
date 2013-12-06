@@ -64,6 +64,7 @@ Bundle 'vim-scripts/sessionman.vim'
 Bundle 'spf13/vim-colors'
 
 """ TagBar """
+nmap <F8> :TagbarToggle<CR>
 Bundle 'majutsushi/tagbar'
 
 """ CoffeeScript """
