@@ -40,7 +40,8 @@ Bundle 'Yggdroot/indentLine'
 Bundle "Raimondi/delimitMate"
 
 """ NerdCommenter """
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 
 """ Session Manager """
 Bundle 'vim-scripts/sessionman.vim'
