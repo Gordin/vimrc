@@ -30,6 +30,10 @@ Bundle 'scrooloose/nerdtree'
 """ Syntastic """
 Bundle 'scrooloose/syntastic'
 
+""" Conceal Plugins """
+Bundle 'tyok/js-mask'
+Bundle 'ehamberg/vim-cute-python'
+
 """ IndentLine (Indent Guides with Conceal) """
 let g:indentLine_char = '¦'
 let g:indentLine_color_term = 239
