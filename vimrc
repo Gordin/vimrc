@@ -55,6 +55,13 @@ Bundle 'tomtom/tcomment_vim'
 " Surround stuff with braces or XML tags or delete/replace
 " ds* delete cs* replace ys* surround
 " t as * selects an XML tag
+function! DeleteBrackets()
+  normal %%
+  let c = getline(".")[col(".") - 1]
+  execute 'normal ds' . c
+endfunction
+
+nnoremap dss :call DeleteBrackets()<CR>
 Bundle 'tpope/vim-surround'
 
 """ Session Manager """
