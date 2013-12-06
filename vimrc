@@ -411,12 +411,12 @@ noremap <C-L> <C-W>l
 noremap <C-H> <C-W>h
 
 " Wrap selections in Parenthesis/bracket
-vnoremap <leader>() <esc>`>a)<esc>`<i(<esc>
-vnoremap <leader>[] <esc>`>a]<esc>`<i[<esc>
-vnoremap <leader>{} <esc>`>a}<esc>`<i{<esc>
-vnoremap <leader><> <esc>`>a><esc>`<i<<esc>
-vnoremap <leader>'' <esc>`>a'<esc>`<i'<esc>
-vnoremap <leader>"" <esc>`>a"<esc>`<i"<esc>
+vnoremap () <esc>`>a)<esc>`<i(<esc>
+vnoremap [] <esc>`>a]<esc>`<i[<esc>
+vnoremap {} <esc>`>a}<esc>`<i{<esc>
+vnoremap <> <esc>`>a><esc>`<i<<esc>
+vnoremap '' <esc>`>a'<esc>`<i'<esc>
+vnoremap "" <esc>`>a"<esc>`<i"<esc>
 
 set pastetoggle=<F12>     " Toggle paste with <F12>
 
