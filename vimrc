@@ -43,6 +43,12 @@ Bundle "Raimondi/delimitMate"
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
 
+""" Surround """
+" Surround stuff with braces or XML tags or delete/replace
+" ds* delete cs* replace ys* surround
+" t as * selects an XML tag
+Bundle 'tpope/vim-surround'
+
 """ Session Manager """
 Bundle 'vim-scripts/sessionman.vim'
 
