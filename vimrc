@@ -30,6 +30,12 @@ Bundle 'scrooloose/nerdtree'
 """ Syntastic """
 Bundle 'scrooloose/syntastic'
 
+""" IndentLine (Indent Guides with Conceal) """
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 239
+" other lines: ┆ ¦ │
+Bundle 'Yggdroot/indentLine'
+
 """ DelimitMate """
 Bundle "Raimondi/delimitMate"
 
