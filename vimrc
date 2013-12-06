@@ -39,6 +39,10 @@ Bundle 'Yggdroot/indentLine'
 """ DelimitMate """
 Bundle "Raimondi/delimitMate"
 
+""" Repeat """
+" Make actions of some plugins repeatable
+Bundle 'tpope/vim-repeat'
+
 """ NerdCommenter """
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
