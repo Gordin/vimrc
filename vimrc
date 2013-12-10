@@ -340,6 +340,9 @@ vnoremap do :diffget<CR>:diffupdate<CR>
 " fast Diffoff
 nnoremap <leader>D :diffoff!<cr>
 
+" Diff current buffer against currently saved version of the file
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+
 
 """ Tabs, Spaces, Wrapping """
 set tabstop=8           " <tab> is 8 spaces long
