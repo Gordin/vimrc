@@ -31,6 +31,9 @@ Bundle 'scrooloose/nerdtree'
 """ Syntastic """
 Bundle 'scrooloose/syntastic'
 
+""" Recover """
+Bundle 'chrisbra/Recover.vim'
+
 """ Conceal Plugins """
 "Bundle 'tyok/js-mask'
 Bundle 'ehamberg/vim-cute-python'
