@@ -31,6 +31,12 @@ Bundle 'scrooloose/nerdtree'
 """ Syntastic """
 Bundle 'scrooloose/syntastic'
 
+""" Easyclip """
+" Delete commands don't yank any more
+" visual paste does not yank any more
+" new "m" command
+Bundle 'svermeulen/vim-easyclip'
+
 """ Recover """
 Bundle 'chrisbra/Recover.vim'
 
