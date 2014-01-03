@@ -287,10 +287,10 @@ nnoremap <silent> n :set hlsearch<CR>n
 nnoremap <silent> N :set hlsearch<CR>N
 
 " Stay on the selected word when selecting a word with * or # to search for
-nnoremap * :call SavePos()<CR>*:call RestorePos()<CR>
-nnoremap g* :call SavePos()<CR>g*:call RestorePos()<CR>
-nnoremap # :call SavePos()<CR>#:call RestorePos()<CR>
-nnoremap g# :call SavePos()<CR>g#:call RestorePos()<CR>
+nnoremap <silent> * :call SavePos()<CR>*:call RestorePos()<CR>
+nnoremap <silent> g* :call SavePos()<CR>g*:call RestorePos()<CR>
+nnoremap <silent> # :call SavePos()<CR>#:call RestorePos()<CR>
+nnoremap <silent> g# :call SavePos()<CR>g#:call RestorePos()<CR>
 
 function! SavePos()
   " Save the current cursor position
