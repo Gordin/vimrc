@@ -105,6 +105,7 @@ let g:UltiSnipsJumpBackwardTrigger =    '<leader><c-k>'
 Bundle 'SirVer/ultisnips'
 
 """ You Complete Me """
+let g:ycm_autoclose_preview_window_after_insertion = 1
 Bundle 'Valloric/YouCompleteMe'
 
 """ Tern for Vim """
