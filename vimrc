@@ -42,7 +42,7 @@ Bundle 'chrisbra/Recover.vim'
 
 """ Conceal Plugins """
 "Bundle 'tyok/js-mask'
-Bundle 'ehamberg/vim-cute-python'
+"Bundle 'ehamberg/vim-cute-python'
 
 """ IndentLine (Indent Guides with Conceal) """
 let g:indentLine_char = '¦'
