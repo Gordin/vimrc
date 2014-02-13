@@ -37,6 +37,13 @@ Bundle 'scrooloose/syntastic'
 " new "m" command
 Bundle 'svermeulen/vim-easyclip'
 
+""" Rainbow Parantheses """                                                                                                                                                                                                                                                    
+au VimEnter * RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesLoadRound
+au VimEnter * RainbowParenthesesLoadSquare
+au VimEnter * RainbowParenthesesLoadBraces
+Bundle 'kien/rainbow_parentheses.vim'
+
 """ Recover """
 Bundle 'chrisbra/Recover.vim'
 
