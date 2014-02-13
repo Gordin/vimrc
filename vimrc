@@ -64,6 +64,10 @@ Bundle "Raimondi/delimitMate"
 " Make actions of some plugins repeatable
 Bundle 'tpope/vim-repeat'
 
+""" Sleuth """
+" Detects and sets indentation
+Bundle 'tpope/vim-sleuth'
+
 """ NerdCommenter """
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
