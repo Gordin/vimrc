@@ -77,9 +77,9 @@ Bundle 'tomtom/tcomment_vim'
 " ds* delete cs* replace ys* surround
 " t as * selects an XML tag
 function! DeleteBrackets()
-  normal %%
-  let c = getline(".")[col(".") - 1]
-  execute 'normal ds' . c
+    normal %%
+    let c = getline(".")[col(".") - 1]
+    execute 'normal ds' . c
 endfunction
 
 nnoremap dss :call DeleteBrackets()<CR>
@@ -136,18 +136,19 @@ let g:signify_mapping_prev_hunk = '<leader>gk'
 " This transforms colorschemes to terminal colorschemes
 " The ctermbg=NONE hooks make backgrounds transparent in terminals
 Bundle 'godlygeek/csapprox'
-let g:CSApprox_hook_post = ['highlight Normal ctermbg=NONE ctermfg=NONE',
-                          \ 'highlight LineNr ctermbg=NONE ctermfg=NONE',
-                          \ 'highlight SignifyLineAdd    cterm=bold ctermbg=NONE ctermfg=green',
-                          \ 'highlight SignifyLineDelete cterm=bold ctermbg=NONE ctermfg=red',
-                          \ 'highlight SignifyLineChange cterm=bold ctermbg=NONE ctermfg=yellow',
-                          \ 'highlight SignifySignAdd    cterm=bold ctermbg=NONE ctermfg=green',
-                          \ 'highlight SignifySignDelete cterm=bold ctermbg=NONE ctermfg=red',
-                          \ 'highlight SignifySignChange cterm=bold ctermbg=NONE ctermfg=yellow',
-                          \ 'highlight SignColumn        ctermbg=NONE',
-                          \ 'highlight NonText ctermbg=NONE ctermfg=NONE',
-                          \ 'highlight clear LineNr'
-                          \]
+let g:CSApprox_hook_post = [
+            \ 'highlight Normal ctermbg=NONE ctermfg=NONE',
+            \ 'highlight LineNr ctermbg=NONE ctermfg=NONE',
+            \ 'highlight SignifyLineAdd    cterm=bold ctermbg=NONE ctermfg=green',
+            \ 'highlight SignifyLineDelete cterm=bold ctermbg=NONE ctermfg=red',
+            \ 'highlight SignifyLineChange cterm=bold ctermbg=NONE ctermfg=yellow',
+            \ 'highlight SignifySignAdd    cterm=bold ctermbg=NONE ctermfg=green',
+            \ 'highlight SignifySignDelete cterm=bold ctermbg=NONE ctermfg=red',
+            \ 'highlight SignifySignChange cterm=bold ctermbg=NONE ctermfg=yellow',
+            \ 'highlight SignColumn        ctermbg=NONE',
+            \ 'highlight NonText ctermbg=NONE ctermfg=NONE',
+            \ 'highlight clear LineNr'
+            \]
 
 """ Ctrl + P """
 let g:ctrlp_map = '<c-p>'
@@ -305,22 +306,22 @@ nnoremap <silent> # :call SavePos()<CR>#:call RestorePos()<CR>
 nnoremap <silent> g# :call SavePos()<CR>g#:call RestorePos()<CR>
 
 function! SavePos()
-  " Save the current cursor position
-  let g:save_cursor = getpos(".")
-  " Save the window position
-  set lazyredraw
-  normal !H
-  let g:save_window = getpos(".")
-  call setpos('.', g:save_cursor)
+    " Save the current cursor position
+    let g:save_cursor = getpos(".")
+    " Save the window position
+    set lazyredraw
+    normal !H
+    let g:save_window = getpos(".")
+    call setpos('.', g:save_cursor)
 endfunction
 
 function! RestorePos()
-  " Restore the window position
-  call setpos('.', g:save_window)
-  normal zt
-  " Restore the cursor position
-  call setpos('.', g:save_cursor)
-  set nolazyredraw
+    " Restore the window position
+    call setpos('.', g:save_window)
+    normal zt
+    " Restore the cursor position
+    call setpos('.', g:save_cursor)
+    set nolazyredraw
 endfunction
 
 " In visual mode press * or # to search for the current selection
@@ -393,9 +394,9 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 " Return to last edit position (You want this!) [N]
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 
 """ Filetype specific stuff """
 
