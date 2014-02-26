@@ -400,7 +400,7 @@ autocmd BufReadPost *
 """ Filetype specific stuff """
 
 " Make sure all mardown files have the correct filetype set and setup wrapping
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} set filetype=markdown
 
 " Treat JSON files like JavaScript
 au BufNewFile,BufRead *.json set ft=javascript
