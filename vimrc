@@ -23,6 +23,14 @@ let g:airline_theme="powerlineish"
 let g:airline#extensions#tabline#enabled = 1
 Bundle 'bling/vim-airline'
 
+""" LaTeX-Box """
+let g:LatexBox_latexmk_async = 1
+let g:LatexBox_latexmk_preview_continuously = 1
+let g:LatexBox_quickfix = 2
+let g:LatexBox_latexmk_options = '-lualatex'
+let g:LatexBox_Folding = 1
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+
 """ NerdTree """
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
