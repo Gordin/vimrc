@@ -202,9 +202,9 @@ set nospell                     " disable spellchecking on startup
 set foldlevelstart=0
 set foldmethod=indent           " Fold automatically based on indentation level
 
-" Space to toggle folds. A toggles recursively until line of cursor is unfolded
-nnoremap <Space> zA
-vnoremap <Space> zA
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
 
 au FileType c setlocal foldmethod=syntax    " Fold based on syntax in C files
 
