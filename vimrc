@@ -223,6 +223,7 @@ set number                      " Show line numbers
 set ruler                       " Show the line and column number of the cursor position,
 set cursorline                  " Highlight the line with the cursor
 set mousehide                   " Hide the mouse cursor while typing (works only in gvim?)
+set scrolloff=10                " Always have 10 lines at the top/bottom above/below cursor
 
 set showmatch                   " Highlight matching brackets when a pair is closed
 
