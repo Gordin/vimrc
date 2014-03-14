@@ -191,7 +191,7 @@ endif
 
 """ Leader """
 let mapleader = ","
-let maplocalleader = "\\"
+let maplocalleader = ","
 
 """ Spellchecking """
 set spelllang=de_20,en          " german and english spellchecking
