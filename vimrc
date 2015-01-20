@@ -455,7 +455,11 @@ command! -nargs=0 Pulse call s:Pulse()
 """ Looks """
 set t_Co=256                    " Tell vim that our Terminal has 256 Colors
 set background=dark             " Tell vim that our background is dark
-colorscheme molokai             " Select cholorscheme
+try
+    colorscheme molokai             " Select cholorscheme
+catch /^Vim\%((\a\+)\)\=:E185/
+    " deal with it
+endtry
 " colorscheme base16-atelierforest             " Select cholorscheme
 set noshowmode                  " Hide the mode text as airline already shows this
 set showcmd                     " Show partially entered commands in the statusline
