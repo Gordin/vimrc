@@ -126,7 +126,7 @@ au BufRead,BufNewFile *.coffee set softtabstop=2
 Plug 'sheerun/vim-polyglot'
 
 nnoremap <silent> <leader>xml :call XmlPretty()<CR>
-Plug 'XmlPretty'
+Plug 'XmlPretty', { 'do': 'dos2unix plugin/xmlpretty.vim'}
 
 
 """ Airline """
