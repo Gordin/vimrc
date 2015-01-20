@@ -10,6 +10,7 @@ git clone git@github.com:Gordin/vimrc.git vim
 cd into the repo and run the setup script:
 ```bash
 cd vim
+sudo yaourt -S cmake clang nodejs #needs cmake, clang and npm. Probably also python and ruby
 bash setup.sh
 ```
 All your .vim* and .gvim* files will end up in an vim.old folder inside the `vim` folder you cloned
