@@ -373,9 +373,13 @@ let g:ctrlp_custom_ignore = {
 \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
 \ 'file': '\.exe$\|\.so$\|\.dat$'
 \ }
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore .svn --ignore .hg --ignore .DS_Store --ignore "**/*.pyc" -g ""'
 " let g:ctrlp_use_caching = 0
 Plug 'kien/ctrlp.vim'
+
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+Plug 'FelikZ/ctrlp-py-matcher'
 
 call plug#end()
 
