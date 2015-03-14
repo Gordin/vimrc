@@ -725,9 +725,6 @@ noremap <C-H> <C-W>h
 " Keep cursor at the same position when joining lines
 nnoremap J mzJ`z
 
-" enables linenumber<Enter> instead of :linenumber<Enter>
-nnoremap <CR> G
-
 "Stop that stupid window from popping up:
 map q: :q
 
