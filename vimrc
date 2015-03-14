@@ -3,6 +3,8 @@ filetype off                  " required for vundle
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'kopischke/vim-fetch'
+
 let g:tex_fold_enabled=1
 let g:fastfold_togglehook = 0
 let g:fastfold_savehook = 1
@@ -10,6 +12,12 @@ Plug 'Konfekt/FastFold'
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " Plug 'chriskempson/base16-vim'
+
+" Better navigation in help files
+Plug 'dahu/vim-help'
+
+" Display images as ASCII in vim
+Plug 'ashisha/image.vim'
 
 Plug 'ConvertBase.vim'
 Plug 'KabbAmine/vCoolor.vim'
@@ -264,6 +272,8 @@ Plug 'spf13/vim-colors'
 Plug 'aklt/plantuml-syntax'
 " Plug 'dtjm/plantuml-syntax.vim'
 
+" Automtic handling of ctags
+Plug 'ludovicchabant/vim-gutentags'
 
 """ TagBar """
 nmap <F8> :TagbarToggle<CR>
