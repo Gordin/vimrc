@@ -1,5 +1,4 @@
 set nocompatible              " be iMproved
-filetype off                  " required for vundle
 
 call plug#begin('~/.vim/plugged')
 
@@ -10,14 +9,14 @@ let g:fastfold_togglehook = 0
 let g:fastfold_savehook = 1
 Plug 'Konfekt/FastFold'
 
-" let base16colorspace=256  " Access colors present in 256 colorspace
-" Plug 'chriskempson/base16-vim'
-
 " Better navigation in help files
 Plug 'dahu/vim-help'
 
 " Display images as ASCII in vim
 Plug 'ashisha/image.vim'
+
+
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'ConvertBase.vim'
 Plug 'KabbAmine/vCoolor.vim'
@@ -72,25 +71,26 @@ Plug 'terryma/vim-expand-region'
 "https://github.com/joom/latex-unicoder.vim/blob/master/autoload/unicoder.vim
 Plug 'joom/latex-unicoder.vim'
 au VimEnter * noremap <C-L> <C-W>l
- 
 
 " Plug 'gorkunov/smartpairs.vim'
 
 Plug 'sjl/gundo.vim'
+
+Plug 'mbbill/undotree'
 
 let g:incsearch#auto_nohlsearch = 0
 let g:incsearch#consistent_n_direction = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)<Plug>Pulse
-map N  <Plug>(incsearch-nohl-N)<Plug>Pulse
+map <silent> n :set hlsearch<CR><Plug>(incsearch-nohl-n)<Plug>Pulse
+map <silent> N :set hlsearch<CR><Plug>(incsearch-nohl-N)<Plug>Pulse
 " nnoremap <silent> n :set hlsearch<CR>n
 " nnoremap <silent> N :set hlsearch<CR>N
-map *  :call SavePos()<CR><Plug>(incsearch-nohl-*):call RestorePos()<CR>
-map g* :call SavePos()<CR><Plug>(incsearch-nohl-g*):call RestorePos()<CR>
-map #  <Plug>(incsearch-nohl-#)
-map g# <Plug>(incsearch-nohl-g#)
+map <silent> *  :call SavePos()<CR><Plug>(incsearch-nohl-*):call RestorePos()<CR>:set hlsearch<CR><Plug>Pulse
+map <silent> g* :call SavePos()<CR><Plug>(incsearch-nohl-g*):call RestorePos()<CR>:set hlsearch<CR><Plug>Pulse
+map <silent> #  <Plug>(incsearch-nohl-#):set hlsearch<CR><Plug>Pulse
+map <silent> g# <Plug>(incsearch-nohl-g#):set hlsearch<CR><Plug>Pulse
 Plug 'haya14busa/incsearch.vim'
 
 Plug 'inside/vim-search-pulse'
@@ -192,6 +192,8 @@ let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
 Plug 'scrooloose/nerdtree'
 
+Plug 'ryanoasis/vim-webdevicons'
+
 """ Syntastic """
 Plug 'scrooloose/syntastic'
 
@@ -199,20 +201,14 @@ Plug 'scrooloose/syntastic'
 Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
 
-""" Easyclip """
-" Delete commands don't yank any more
-" visual paste does not yank any more
-" new "m" command
-"Plug 'svermeulen/vim-easyclip'
-
 """ Rainbow Parantheses """
 let g:rainbow_active = 1
-Plug 'luochen1990/rainbow'
-" au VimEnter * RainbowParenthesesToggle
-" au VimEnter * RainbowParenthesesLoadRound
-" au VimEnter * RainbowParenthesesLoadSquare
-" au VimEnter * RainbowParenthesesLoadBraces
-" Plug 'kien/rainbow_parentheses.vim'
+" Plug 'luochen1990/rainbow'
+au VimEnter * RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesLoadRound
+au VimEnter * RainbowParenthesesLoadSquare
+au VimEnter * RainbowParenthesesLoadBraces
+Plug 'kien/rainbow_parentheses.vim'
 
 """ Recover """
 Plug 'chrisbra/Recover.vim'
@@ -230,13 +226,14 @@ Plug 'Yggdroot/indentLine'
 """ FakeClip """
 " Clipboard stuff for Terminal vim. Paste to vim in screen
 "Plug 'kana/vim-fakeclip'
-
-""" DelimitMate """
-Plug 'Raimondi/delimitMate'
+set clipboard=unnamed
 
 """ Repeat """
 " Make actions of some plugins repeatable
 Plug 'tpope/vim-repeat'
+
+""" Auto close parantheses (repeatable)
+Plug 'cohama/lexima.vim'
 
 """ IndentConsistencyCop """
 Plug 'IndentConsistencyCop'
@@ -249,6 +246,7 @@ Plug 'IndentConsistencyCop'
 """ NerdCommenter """
 "Plug 'scrooloose/nerdcommenter'
 Plug 'tomtom/tcomment_vim'
+vmap gb :TCommentBlock<cr>
 
 """ Surround """
 " Surround stuff with braces or XML tags or delete/replace
@@ -268,12 +266,22 @@ Plug 'vim-scripts/sessionman.vim'
 
 """ Vim Colors (Colorschemes) """
 Plug 'spf13/vim-colors'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'w0ng/vim-hybrid'
+Plug 'NLKNguyen/papercolor-theme'
+
+
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" Plug 'chriskempson/base16-vim'
+
+
 
 Plug 'aklt/plantuml-syntax'
 " Plug 'dtjm/plantuml-syntax.vim'
 
 " Automtic handling of ctags
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 """ TagBar """
 nmap <F8> :TagbarToggle<CR>
@@ -296,7 +304,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsListSnippets = "<leader><tab>"
 "let g:UltiSnipsDontReverseSearchPath="1"
 
-" let g:UltiSnipsExpandTrigger =          '<leader><tab>'
+let g:UltiSnipsExpandTrigger =          '<leader><tab>'
 " let g:UltiSnipsListSnippets =           '<leader><c-tab>'
 " let g:UltiSnipsJumpForwardTrigger =     '<leader><c-j>'
 " let g:UltiSnipsJumpBackwardTrigger =    '<leader><c-k>'
@@ -381,7 +389,6 @@ Plug 'kien/ctrlp.vim'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 Plug 'FelikZ/ctrlp-py-matcher'
 
-call plug#end()
 
 filetype plugin indent on
 
@@ -564,25 +571,15 @@ set virtualedit=block
 "" Searching ""
 set ignorecase          " Ignore case while searching
 set smartcase           " Be case sensitive when capital letters are used
-set incsearch           " start searching while typing
 set hlsearch
+
+autocmd InsertEnter * :setlocal nohlsearch
+autocmd InsertLeave * :setlocal hlsearch
 
 set tags=./tags;/
 
 " Toggle search-highlights with <leader>/
 nmap <silent> <leader>/ :set invhlsearch<CR>
-
-" Automatically turn hlsearch on again when you search or go through results
-" nnoremap / :set hlsearch<CR>/
-" nnoremap ? :set hlsearch<CR>/
-" nnoremap <silent> n :set hlsearch<CR>n
-" nnoremap <silent> N :set hlsearch<CR>N
-
-" Stay on the selected word when selecting a word with * or # to search for
-" nnoremap <silent> * :call SavePos()<CR>:set hlsearch<CR>*:call RestorePos()<CR>
-" nnoremap <silent> g* :call SavePos()<CR>:set hlsearch<CR>g*:call RestorePos()<CR>
-" nnoremap <silent> # :call SavePos()<CR>:set hlsearch<CR>#:call RestorePos()<CR>
-" nnoremap <silent> g# :call SavePos()<CR>:set hlsearch<CR>g#:call RestorePos()<CR>
 
 function! SavePos()
     " Save the current cursor position
@@ -671,11 +668,16 @@ autocmd! bufwritepost vimrc :CSApprox
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-" Return to last edit position (You want this!) [N]
-autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+"Jump to last cursor position when opening a file
+autocmd BufReadPost * call s:SetCursorPosition()
+function! s:SetCursorPosition()
+    if &filetype !~ 'svn\|commit\c'
+        if line("'\"") > 0 && line("'\"") <= line("$")
+            exe "normal! g`\""
+            normal! zz
+        endif
+    end
+endfunction
 
 """ Filetype specific stuff """
 
@@ -728,6 +730,12 @@ noremap <C-H> <C-W>h
 
 " Keep cursor at the same position when joining lines
 nnoremap J mzJ`z
+
+" Get directory of current file in command line mode
+cnoremap <leader>. <C-R>=expand('%:h').'/'<cr>
+
+" Open directory of current file
+nmap <leader>e. :e %:h<CR>
 
 "Stop that stupid window from popping up:
 map q: :q
