@@ -133,10 +133,6 @@ au BufRead,BufNewFile *.coffee set shiftwidth=2
 au BufRead,BufNewFile *.coffee set softtabstop=2
 Plug 'sheerun/vim-polyglot'
 
-nnoremap <silent> <leader>xml :call XmlPretty()<CR>
-Plug 'XmlPretty', { 'do': 'dos2unix plugin/xmlpretty.vim'}
-
-
 """ Airline """
 let g:airline_powerline_fonts = 1
 let g:airline_theme="powerlineish"
