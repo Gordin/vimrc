@@ -30,7 +30,7 @@ let g:CCTreeKeyTraceReverseTree = '<leader><'
 let g:CCTreeKeyHilightTree = '<C-l>'        " Static highlighting
 let g:CCTreeKeySaveWindow = '<C-\>y'
 let g:CCTreeKeyToggleWindow = '<C-\>w'
-let g:CCTreeKeyCompressTree = 'zs'     " Compress call-tree 
+let g:CCTreeKeyCompressTree = 'zs'     " Compress call-tree
 let g:CCTreeKeyDepthPlus = '<C-\>='
 let g:CCTreeKeyDepthMinus = '<C-\>-'
 Plug 'hari-rangarajan/CCTree'
@@ -133,13 +133,18 @@ au BufRead,BufNewFile *.coffee set shiftwidth=2
 au BufRead,BufNewFile *.coffee set softtabstop=2
 Plug 'sheerun/vim-polyglot'
 
+" nnoremap <silent> <leader>xml :call XmlPretty()<CR>
+" Plug 'XmlPretty', { 'do': 'dos2unix plugin/xmlpretty.vim'}
+
 """ Airline """
 let g:airline_powerline_fonts = 1
 let g:airline_theme="powerlineish"
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline_section_warning = "%{airline#util#wrap(atplib#ProgressBar(),0)}%{airline#util#wrap(g:status_OutDir,0)}%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}"
 "let g:airline_section_warning = "%{airline#util#wrap(atplib#ProgressBar(),0)}%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}"
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 
 """ Automatic TeX Plugin """
 "Plug 'coot/atp_vim'
@@ -318,7 +323,8 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " let g:ycm_server_log_level = 'debug'
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 
 """ Tern for Vim """
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install'}
@@ -385,6 +391,7 @@ Plug 'kien/ctrlp.vim'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 Plug 'FelikZ/ctrlp-py-matcher'
 
+call plug#end()
 
 filetype plugin indent on
 
