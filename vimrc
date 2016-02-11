@@ -144,6 +144,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_section_warning = "%{airline#util#wrap(atplib#ProgressBar(),0)}%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ntpeters/vim-airline-colornum'
 
 
 """ Automatic TeX Plugin """
