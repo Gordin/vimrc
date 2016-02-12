@@ -12,6 +12,16 @@ Plug 'Konfekt/FastFold'
 " Better navigation in help files
 Plug 'dahu/vim-help'
 
+" Show a list of last open files when no file is opened at start
+" set viminfo='100,n$HOME/.vim/tmp/info/viminfo
+Plug 'mhinz/vim-startify'
+
+" Ask if you wanted to open a different file when you open non-existant files
+Plug 'EinfachToll/DidYouMean'
+
+" Automaticcal create folders that don't exist
+Plug 'DataWraith/auto_mkdir'
+
 " Display images as ASCII in vim
 Plug 'ashisha/image.vim'
 
