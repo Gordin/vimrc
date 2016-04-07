@@ -655,7 +655,7 @@ command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | d
 
 
 """ Tabs, Spaces, Wrapping """
-set tabstop=4           " <tab> is 8 spaces long
+set tabstop=4           " <tab> is 4 spaces long
 set shiftwidth=4        " shift text by 4 spaces with autoindent or << / >>
 set softtabstop=4       " Use shiftwidth als visible width of tabs
 set expandtab           " expands <tab> to spaces
