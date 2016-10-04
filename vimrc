@@ -12,6 +12,16 @@ Plug 'Konfekt/FastFold'
 " Better navigation in help files
 Plug 'dahu/vim-help'
 
+" Show a list of last open files when no file is opened at start
+" set viminfo='100,n$HOME/.vim/tmp/info/viminfo
+Plug 'mhinz/vim-startify'
+
+" Ask if you wanted to open a different file when you open non-existant files
+Plug 'EinfachToll/DidYouMean'
+
+" Automaticcal create folders that don't exist
+Plug 'DataWraith/auto_mkdir'
+
 " Display images as ASCII in vim
 Plug 'ashisha/image.vim'
 
@@ -144,6 +154,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_section_warning = "%{airline#util#wrap(atplib#ProgressBar(),0)}%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ntpeters/vim-airline-colornum'
 
 
 """ Automatic TeX Plugin """
@@ -374,9 +385,12 @@ let g:CSApprox_hook_post = [
             \ 'highlight clear LineNr'
             \]
 
+Plug 'davidhalter/jedi-vim'
+
 """ Ctrl + P """
-let g:ctrlp_map = '<c-?>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
 map <c-a-p> :CtrlPMixed<CR>
 " Sane Ignore For ctrlp
 let g:ctrlp_custom_ignore = {
@@ -386,7 +400,7 @@ let g:ctrlp_custom_ignore = {
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore .svn --ignore .hg --ignore .DS_Store --ignore "**/*.pyc" -g ""'
 " let g:ctrlp_use_caching = 0
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 Plug 'FelikZ/ctrlp-py-matcher'
@@ -641,7 +655,7 @@ command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | d
 
 
 """ Tabs, Spaces, Wrapping """
-set tabstop=4           " <tab> is 8 spaces long
+set tabstop=4           " <tab> is 4 spaces long
 set shiftwidth=4        " shift text by 4 spaces with autoindent or << / >>
 set softtabstop=4       " Use shiftwidth als visible width of tabs
 set expandtab           " expands <tab> to spaces
