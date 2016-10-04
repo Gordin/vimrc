@@ -22,50 +22,36 @@ Plug 'EinfachToll/DidYouMean'
 " Automaticcal create folders that don't exist
 Plug 'DataWraith/auto_mkdir'
 
-" Display images as ASCII in vim
-Plug 'ashisha/image.vim'
-
 
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'ConvertBase.vim'
-Plug 'KabbAmine/vCoolor.vim'
-au VimEnter * nmap <leader>co <Plug>vCoolor
-"Somehowe <A-v> is the same as ö to vim...
-au VimEnter * unmap ö
-au VimEnter * iunmap ö
 
-let g:CCTreeKeyTraceForwardTree = '<leader>>'
-let g:CCTreeKeyTraceReverseTree = '<leader><'
-let g:CCTreeKeyHilightTree = '<C-l>'        " Static highlighting
-let g:CCTreeKeySaveWindow = '<C-\>y'
-let g:CCTreeKeyToggleWindow = '<C-\>w'
-let g:CCTreeKeyCompressTree = 'zs'     " Compress call-tree
-let g:CCTreeKeyDepthPlus = '<C-\>='
-let g:CCTreeKeyDepthMinus = '<C-\>-'
-Plug 'hari-rangarajan/CCTree'
+"let g:CCTreeKeyTraceForwardTree = '<leader>>'
+"let g:CCTreeKeyTraceReverseTree = '<leader><'
+"let g:CCTreeKeyHilightTree = '<C-l>'        " Static highlighting
+"let g:CCTreeKeySaveWindow = '<C-\>y'
+"let g:CCTreeKeyToggleWindow = '<C-\>w'
+"let g:CCTreeKeyCompressTree = 'zs'     " Compress call-tree
+"let g:CCTreeKeyDepthPlus = '<C-\>='
+"let g:CCTreeKeyDepthMinus = '<C-\>-'
+"Plug 'hari-rangarajan/CCTree'
 
 
 Plug 'BlueCatMe/TempKeyword'
-if has('gui_running')
+try
     au VimEnter * call DeclareTempKeyword('1', 'bold', 'lightyellow', 'Black')
     au VimEnter * call DeclareTempKeyword('2', 'bold', 'green', 'Black')
     au VimEnter * call DeclareTempKeyword('3', 'bold', 'lightgreen', 'Black')
     au VimEnter * call DeclareTempKeyword('4', 'bold', 'brown', 'Black')
     au VimEnter * call DeclareTempKeyword('5', 'bold', 'lightmagenta', 'Black')
     au VimEnter * call DeclareTempKeyword('6', 'bold', 'lightcyan', 'Black')
-else
-    au VimEnter * call DeclareTempKeyword('1', 'bold', 'lightyellow', 16)
-    au VimEnter * call DeclareTempKeyword('2', 'bold', 'green', 16)
-    au VimEnter * call DeclareTempKeyword('3', 'bold', 'lightgreen', 16)
-    au VimEnter * call DeclareTempKeyword('4', 'bold', 'brown', 16)
-    au VimEnter * call DeclareTempKeyword('5', 'bold', 'lightmagenta', 16)
-    au VimEnter * call DeclareTempKeyword('6', 'bold', 'lightcyan', 16)
-endif
-au VimEnter * call DeclareTempKeyword('7', 'bold', 'White', 'DarkRed')
-au VimEnter * call DeclareTempKeyword('8', 'bold', 'White', 'DarkGreen')
-au VimEnter * call DeclareTempKeyword('9', 'bold', 'White', 'DarkBlue')
-au VimEnter * call DeclareTempKeyword('0', 'bold', 'White', 'DarkMagenta')
+    au VimEnter * call DeclareTempKeyword('7', 'bold', 'White', 'DarkRed')
+    au VimEnter * call DeclareTempKeyword('8', 'bold', 'White', 'DarkGreen')
+    au VimEnter * call DeclareTempKeyword('9', 'bold', 'White', 'DarkBlue')
+    au VimEnter * call DeclareTempKeyword('0', 'bold', 'White', 'DarkMagenta')
+catch
+    " do nothing
+endtry
 
 " Plug 'bogado/file-lane'
 
@@ -78,15 +64,7 @@ vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)
 Plug 'terryma/vim-expand-region'
 
-"https://github.com/joom/latex-unicoder.vim/blob/master/autoload/unicoder.vim
-Plug 'joom/latex-unicoder.vim'
-au VimEnter * noremap <C-L> <C-W>l
-
-" Plug 'gorkunov/smartpairs.vim'
-
 Plug 'sjl/gundo.vim'
-
-Plug 'mbbill/undotree'
 
 let g:incsearch#auto_nohlsearch = 0
 let g:incsearch#consistent_n_direction = 1
@@ -113,12 +91,6 @@ let g:vim_search_pulse_color_list = [9, 10, 9]
 " nmap <silent> N N<Plug>Pulse
 " Pulses cursor line on first match when doing search with / or ?
 " cmap <enter> <Plug>PulseFirst
-
-" Plug "ivyl/vim-bling"
-
-" Plug "xolox/vim-lua-ftplugin"
-" Plug "xolox/vim-misc"
-" Plug "xolox/vim-lua-inspect"
 
 """ Fugitive """
 command! Gpush Git push
@@ -157,9 +129,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-airline-colornum'
 
 
-""" Automatic TeX Plugin """
-"Plug 'coot/atp_vim'
-"
 let g:tex_flavor='latex'
 "let s:tex_conceal= 'abdmgsS'
 let g:tex_conceal=''
@@ -195,7 +164,7 @@ function! SyncTexForward()
   redraw!
 endfunction
 
-Plug 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Plug 'https://github.com/vim-latex/vim-latex.git'
 
 
 
@@ -210,7 +179,6 @@ Plug 'ryanoasis/vim-webdevicons'
 Plug 'scrooloose/syntastic'
 
 """ Ack """
-Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
 
 """ Rainbow Parantheses """
@@ -223,11 +191,7 @@ au VimEnter * RainbowParenthesesLoadBraces
 Plug 'kien/rainbow_parentheses.vim'
 
 """ Recover """
-Plug 'chrisbra/Recover.vim'
-
-""" Conceal Plugins """
-"Plug 'tyok/js-mask'
-"Plug 'ehamberg/vim-cute-python'
+" Plug 'chrisbra/Recover.vim'
 
 """ IndentLine (Indent Guides with Conceal) """
 let g:indentLine_char = '»'
@@ -246,10 +210,6 @@ Plug 'tpope/vim-repeat'
 
 """ Auto close parantheses (repeatable)
 Plug 'cohama/lexima.vim'
-
-""" IndentConsistencyCop """
-Plug 'IndentConsistencyCop'
-"Plug 'IndentConsistencyCopAutoCmds'
 
 """ Sleuth """
 " Detects and sets indentation
@@ -273,9 +233,6 @@ endfunction
 nnoremap dss :call DeleteBrackets()<CR>
 Plug 'tpope/vim-surround'
 
-""" Session Manager """
-Plug 'vim-scripts/sessionman.vim'
-
 """ Vim Colors (Colorschemes) """
 Plug 'spf13/vim-colors'
 Plug 'altercation/vim-colors-solarized'
@@ -287,13 +244,6 @@ Plug 'NLKNguyen/papercolor-theme'
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " Plug 'chriskempson/base16-vim'
 
-
-
-Plug 'aklt/plantuml-syntax'
-" Plug 'dtjm/plantuml-syntax.vim'
-
-" Automtic handling of ctags
-" Plug 'ludovicchabant/vim-gutentags'
 
 """ TagBar """
 nmap <F8> :TagbarToggle<CR>
@@ -339,26 +289,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 """ Tern for Vim """
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install'}
-
-Plug 'junegunn/fzf', { 'dir': '~/dotfiles/fzf', 'do': 'yes \| ./install' }
-" List of buffers
-function! BufList()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! BufOpen(e)
-  execute 'buffer '. matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-nnoremap <silent> <Leader><c-?> :call fzf#run({
-\   'source':      reverse(BufList()),
-\   'sink':        function('BufOpen'),
-\   'options':     '+m',
-\   'tmux_height': '40%'
-\ })<CR>
 
 """ Signify """
 Plug 'mhinz/vim-signify'
@@ -773,8 +703,5 @@ vmap <silent> <expr> p <sid>Repl()
 
 
 noremap <silent> <leader>mk :!latexmk %:t:r -shell-escape -lualatex<CR><CR>
-
-
-
 
 
