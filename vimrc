@@ -105,8 +105,6 @@ Plug 'ap/vim-css-color'
 " astyle, autopep8, js-beautify
 Plug 'Chiel92/vim-autoformat'
 
-Plug 'gadgetxml.vim'
-
 """ polyglot """
 let b:LatexBox_loaded = 1 "Don't load LatexBox (we use latex-suite)
 let g:coffee_make_options = '-b'
@@ -124,6 +122,7 @@ let g:airline_theme="powerlineish"
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline_section_warning = "%{airline#util#wrap(atplib#ProgressBar(),0)}%{airline#util#wrap(g:status_OutDir,0)}%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}"
 "let g:airline_section_warning = "%{airline#util#wrap(atplib#ProgressBar(),0)}%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}%{airline#util#wrap(airline#extensions#whitespace#check(),0)}"
+"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-airline-colornum'
@@ -166,7 +165,13 @@ endfunction
 
 Plug 'https://github.com/vim-latex/vim-latex.git'
 
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'joonty/vdebug'
 
+
+Plug 'metakirby5/codi.vim'
 
 """ NerdTree """
 let NERDTreeShowHidden=1
@@ -177,6 +182,14 @@ Plug 'ryanoasis/vim-webdevicons'
 
 """ Syntastic """
 Plug 'scrooloose/syntastic'
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_exec = 'flake8-python2'
+let g:syntastic_python_flake8_post_args='--ignore=E221,E241'
+
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+"let g:syntastic_ruby_mri_args = '--my --args --here'
+
+let g:syntastic_aggregate_errors = 1
 
 """ Ack """
 Plug 'rking/ag.vim'
@@ -283,7 +296,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " let g:ycm_server_keep_logfiles = 1
 " let g:ycm_server_log_level = 'debug'
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 
@@ -334,6 +347,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'ivalkeen/vim-ctrlp-tjump'
+
+let g:ctrlp_tjump_shortener = ['/home/.*/work/', '.../']
+"let g:ctrlp_tjump_only_silent = 1
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
 
 call plug#end()
 
@@ -505,6 +524,8 @@ set gdefault            " substitutions have the g (all matches) flag by default
 " Change to previous/next tab with H/L
 nnoremap H :tabprevious<CR>
 nnoremap L :tabnext<CR>
+nnoremap <leader>h :tabprevious<CR>
+nnoremap <leader>l :tabnext<CR>
 
 " go down or up 1 visual line on wrapped lines instead of line of file
 nnoremap j gj
@@ -685,10 +706,12 @@ cnoremap <leader>. <C-R>=expand('%:h').'/'<cr>
 nmap <leader>e. :e %:h<CR>
 
 "Stop that stupid window from popping up:
-map q: :q
+nnoremap q: :q
 
 set pastetoggle=<F12>     " Toggle paste with <F12>
 
+map <leader>st :Startify<cr>
+map <leader>sT :tabe<cr>:Startify<cr>
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
@@ -702,6 +725,6 @@ endfunction
 vmap <silent> <expr> p <sid>Repl()
 
 
-noremap <silent> <leader>mk :!latexmk %:t:r -shell-escape -lualatex<CR><CR>
+noremap <silent> <leader>mk :!latexmk "%:t:r" -shell-escape -lualatex<CR>
 
 
