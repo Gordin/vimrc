@@ -74,18 +74,10 @@ Plug 'terryma/vim-expand-region'
 
 Plug 'sjl/gundo.vim'
 
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
 let g:incsearch#auto_nohlsearch = 0
 let g:incsearch#consistent_n_direction = 1
-map /  :set hlsearch<CR><Plug>(incsearch-forward)
-map ?  :set hlsearch<CR><Plug>(incsearch-backward)
-map g/ :set hlsearch<CR><Plug>(incsearch-stay)
-map <silent> n :set hlsearch<CR><Plug>(incsearch-nohl-n)<Plug>Pulse
-map <silent> N :set hlsearch<CR><Plug>(incsearch-nohl-N)<Plug>Pulse
-map <silent> *  <Plug>(incsearch-nohl-*)<c-o>eb:set hlsearch<CR><Plug>Pulse
-map <silent> g* <Plug>(incsearch-nohl-g*)<c-o>eb:set hlsearch<CR><Plug>Pulse
-map <silent> #  <Plug>(incsearch-nohl-#):set hlsearch<CR><Plug>Pulse
-map <silent> g# <Plug>(incsearch-nohl-g#):set hlsearch<CR><Plug>Pulse
-Plug 'haya14busa/incsearch.vim'
 
 Plug 'inside/vim-search-pulse'
 let g:vim_search_pulse_mode = 'pattern'
@@ -609,7 +601,7 @@ autocmd InsertLeave * :setlocal hlsearch
 set tags=./tags;/
 
 " Toggle search-highlights with <leader>/
-nmap <silent> <leader>/ :set invhlsearch<CR>
+nmap <silent> <leader><space> :set invhlsearch<CR>
 
 function! SavePos()
     " Save the current cursor position
@@ -693,6 +685,8 @@ autocmd! bufwritepost .vimrc :CSApprox
 autocmd! bufwritepost vimrc source ~/.vimrc
 autocmd! bufwritepost vimrc :CSApprox
 
+" Make q close the commend window (That thing when you hit q: or q/)
+autocmd! CmdwinEnter * nnoremap <buffer> q <c-c><c-c>
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
@@ -719,6 +713,27 @@ au BufNewFile,BufRead *.json set ft=json
 
 
 """ Convenience mappings """
+
+" Search Mappings
+nmap <silent> /  :set hlsearch<CR><Plug>(incsearch-forward)
+nmap <silent> ?  :set hlsearch<CR><Plug>(incsearch-backward)
+nmap <silent> g/ :set hlsearch<CR><Plug>(incsearch-stay)
+map <silent> n :set hlsearch<CR><Plug>(incsearch-nohl-n)<Plug>Pulse
+map <silent> N :set hlsearch<CR><Plug>(incsearch-nohl-N)<Plug>Pulse
+
+map <silent> *  :let g:winview = winsaveview()<CR><Plug>(incsearch-nohl-*):call winrestview(g:winview)<cr>eb:set hlsearch<CR><Plug>Pulse
+map <silent> g* :let g:winview = winsaveview()<CR><Plug>(incsearch-nohl-g*):call winrestview(g:winview)<c-o>eb:set hlsearch<CR><Plug>Pulse
+map <silent> #  <Plug>(incsearch-nohl-#):set hlsearch<CR><Plug>Pulse
+map <silent> g# <Plug>(incsearch-nohl-g#):set hlsearch<CR><Plug>Pulse
+
+nmap <leader>/ <Plug>(incsearch-fuzzy-/)
+nmap <leader>? <Plug>(incsearch-fuzzy-?)
+nmap <leader>g/ <Plug>(incsearch-fuzzy-stay)
+
+
+" paste last search: "/p
+" execute yanked vim commands: :@"
+
 
 " Clean whitespace
 map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
@@ -766,9 +781,6 @@ cnoremap <leader>. <C-R>=expand('%:h').'/'<cr>
 
 " Open directory of current file
 nmap <leader>e. :e %:h<CR>
-
-"Stop that stupid window from popping up:
-nnoremap q: :q
 
 set pastetoggle=<F12>     " Toggle paste with <F12>
 
