@@ -12,6 +12,12 @@ Plug 'Konfekt/FastFold'
 " Better navigation in help files
 Plug 'dahu/vim-help'
 
+Plug 'dbakker/vim-projectroot'
+
+Plug 'forevernull/vim-json-format'
+
+" Plug 'zxqfl/tabnine-vim'
+
 " Show a list of last open files when no file is opened at start
 " set viminfo='100,n$HOME/.vim/tmp/info/viminfo
 Plug 'mhinz/vim-startify'
@@ -23,7 +29,9 @@ Plug 'EinfachToll/DidYouMean'
 Plug 'DataWraith/auto_mkdir'
 
 
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'mg979/vim-visual-multi'
+
 
 
 "let g:CCTreeKeyTraceForwardTree = '<leader>>'
@@ -68,15 +76,13 @@ Plug 'sjl/gundo.vim'
 
 let g:incsearch#auto_nohlsearch = 0
 let g:incsearch#consistent_n_direction = 1
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+map /  :set hlsearch<CR><Plug>(incsearch-forward)
+map ?  :set hlsearch<CR><Plug>(incsearch-backward)
+map g/ :set hlsearch<CR><Plug>(incsearch-stay)
 map <silent> n :set hlsearch<CR><Plug>(incsearch-nohl-n)<Plug>Pulse
 map <silent> N :set hlsearch<CR><Plug>(incsearch-nohl-N)<Plug>Pulse
-" nnoremap <silent> n :set hlsearch<CR>n
-" nnoremap <silent> N :set hlsearch<CR>N
-map <silent> *  :call SavePos()<CR><Plug>(incsearch-nohl-*):call RestorePos()<CR>:set hlsearch<CR><Plug>Pulse
-map <silent> g* :call SavePos()<CR><Plug>(incsearch-nohl-g*):call RestorePos()<CR>:set hlsearch<CR><Plug>Pulse
+map <silent> *  <Plug>(incsearch-nohl-*)<c-o>eb:set hlsearch<CR><Plug>Pulse
+map <silent> g* <Plug>(incsearch-nohl-g*)<c-o>eb:set hlsearch<CR><Plug>Pulse
 map <silent> #  <Plug>(incsearch-nohl-#):set hlsearch<CR><Plug>Pulse
 map <silent> g# <Plug>(incsearch-nohl-g#):set hlsearch<CR><Plug>Pulse
 Plug 'haya14busa/incsearch.vim'
@@ -85,8 +91,8 @@ Plug 'inside/vim-search-pulse'
 let g:vim_search_pulse_mode = 'pattern'
 let g:vim_search_pulse_duration = 50
 let g:vim_search_pulse_disable_auto_mappings = 1
-let g:vim_search_pulse_color_list = [47, 48, 49, 50, 51]
-let g:vim_search_pulse_color_list = [9, 10, 9]
+" let g:vim_search_pulse_color_list = [47, 48, 49, 50, 51]
+" let g:vim_search_pulse_color_list = [9, 10, 9]
 " nmap <silent> n n<Plug>Pulse
 " nmap <silent> N N<Plug>Pulse
 " Pulses cursor line on first match when doing search with / or ?
@@ -170,6 +176,15 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'joonty/vdebug'
 
+au FileType ruby setlocal shiftwidth=2
+au FileType ruby setlocal softtabstop=4
+au FileType ruby setlocal expandtab
+au FileType ruby setlocal tabstop=2           " <tab> is 4 spaces long
+" au FileType ruby setlocal nofixeol
+" au FileType ruby setlocal noeol
+
+"autocmd BufWritePost *.rb !ripper-tags -R --exclude=vendor
+
 
 Plug 'metakirby5/codi.vim'
 
@@ -192,6 +207,7 @@ let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_aggregate_errors = 1
 
 """ Ack """
+Plug 'jremmen/vim-ripgrep'
 Plug 'rking/ag.vim'
 
 """ Rainbow Parantheses """
@@ -231,7 +247,8 @@ Plug 'cohama/lexima.vim'
 """ NerdCommenter """
 "Plug 'scrooloose/nerdcommenter'
 Plug 'tomtom/tcomment_vim'
-vmap gb :TCommentBlock<cr>
+vmap <c-_> :TCommentBlock<cr>
+nmap <c-_> :TComment<cr>
 
 """ Surround """
 " Surround stuff with braces or XML tags or delete/replace
@@ -252,6 +269,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'w0ng/vim-hybrid'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'aonemd/kuroi.vim'
 
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
@@ -287,18 +305,29 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine.
 Plug 'honza/vim-snippets'
 
-""" You Complete Me """
-" disable <tab>, <s-tab> as it is used by UltiSnips, c-n and c-p work just fine
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_server_keep_logfiles = 1
-" let g:ycm_server_log_level = 'debug'
-let g:ycm_collect_identifiers_from_tags_files = 1
-" let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+Plug 'fishbullet/deoplete-ruby'
+" Plug 'hackhowtofaq/vim-solargraph'
+
+" """ You Complete Me """
+" " disable <tab>, <s-tab> as it is used by UltiSnips, c-n and c-p work just fine
+" let g:ycm_key_list_select_completion = ['<Down>']
+" let g:ycm_key_list_previous_completion = ['<Up>']
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" " let g:ycm_server_keep_logfiles = 1
+" " let g:ycm_server_log_level = 'debug'
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" " let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 
 """ Tern for Vim """
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install'}
@@ -330,6 +359,11 @@ let g:CSApprox_hook_post = [
 
 Plug 'davidhalter/jedi-vim'
 
+Plug 'elzr/vim-json'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 """ Ctrl + P """
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -353,6 +387,29 @@ let g:ctrlp_tjump_shortener = ['/home/.*/work/', '.../']
 "let g:ctrlp_tjump_only_silent = 1
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
+
+function! CtrlPOpenFunc(action, line)
+    if a:action =~ '^h$'
+        " Get the filename
+        let filename = fnameescape(fnamemodify(a:line, ':p'))
+
+        " Close CtrlP
+        call ctrlp#exit()
+        call ctrlp#mrufiles#add(filename)
+
+        " insert the contents of filename into the buffer
+        put =filename
+    else
+        " Use CtrlP's default file opening function
+        call call('ctrlp#acceptfile', [a:action, a:line])
+
+    endif
+endfunction
+
+let g:ctrlp_open_func = {
+            \ 'files': 'CtrlPOpenFunc',
+            \ 'mru files': 'CtrlPOpenFunc'
+            \ }
 
 call plug#end()
 
@@ -409,40 +466,42 @@ vnoremap <Space> za
 
 au FileType c setlocal foldmethod=syntax    " Fold based on syntax in C files
 
-" Pulse Line
-function! s:Pulse()
-    redir => old_hi
-        silent execute 'hi CursorLine'
-    redir END
-    let old_hi = split(old_hi, '\n')[0]
-    let old_hi = substitute(old_hi, 'xxx', '', '')
-
-    let steps = 8
-    let width = 1
-    let start = width
-    let end = steps * width
-    let color = 233
-
-    for i in range(start, end, width)
-        execute "hi CursorLine ctermbg=" . (color + i)
-        redraw
-        sleep 6m
-    endfor
-    for i in range(end, start, -1 * width)
-        execute "hi CursorLine ctermbg=" . (color + i)
-        redraw
-        sleep 6m
-    endfor
-
-    execute 'hi ' . old_hi
-  endfunction
-command! -nargs=0 Pulse call s:Pulse()
+" " Pulse Line
+" function! s:Pulse()
+"     redir => old_hi
+"         silent execute 'hi CursorLine'
+"     redir END
+"     let old_hi = split(old_hi, '\n')[0]
+"     let old_hi = substitute(old_hi, 'xxx', '', '')
+"
+"     let steps = 8
+"     let width = 1
+"     let start = width
+"     let end = steps * width
+"     let color = 233
+"
+"     for i in range(start, end, width)
+"         execute "hi CursorLine ctermbg=" . (color + i)
+"         redraw
+"         sleep 6m
+"     endfor
+"     for i in range(end, start, -1 * width)
+"         execute "hi CursorLine ctermbg=" . (color + i)
+"         redraw
+"         sleep 6m
+"     endfor
+"
+"     execute 'hi ' . old_hi
+"   endfunction
+" command! -nargs=0 Pulse call s:Pulse()
 
 
 """ Looks """
 set t_Co=256                    " Tell vim that our Terminal has 256 Colors
+set termguicolors               " Use truecolor in terminal
 set background=dark             " Tell vim that our background is dark
 try
+    " colorscheme kuroi             " Select cholorscheme
     colorscheme molokai             " Select cholorscheme
 catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
@@ -455,11 +514,12 @@ set lazyredraw
 set laststatus=2                " Always show the statusline
 
 syntax on                       " Syntax highlighting
-set number                      " Show line numbers
+set relativenumber              " Show line numbers relative to current line
+set number                      " Show actual line number on current line
 set ruler                       " Show the line and column number of the cursor position,
 set cursorline                  " Highlight the line with the cursor
 set mousehide                   " Hide the mouse cursor while typing (works only in gvim?)
-set scrolloff=10                " Always have 10 lines at the top/bottom above/below cursor
+set scrolloff=5                 " Always have 10 lines at the top/bottom above/below cursor
 
 set showmatch                   " Highlight matching brackets when a pair is closed
 
@@ -471,8 +531,8 @@ set listchars+=trail:…          " show trailing spaces as dots
 set listchars+=eol:¬            " show line break
 set listchars+=extends:>        " The character to show in the last column when wrap is off and the
                                 " line continues beyond the right of the screen
-set listchars+=precedes:<       " The character to show in the last column when wrap is off and the
-                                " line continues beyond the right of the screen
+set listchars+=precedes:<       " The character to show in the first column when wrap is off and the
+                                " line continues beyond the left of the screen
 
 """ History, Backup, undo """
 set history=10000
@@ -528,8 +588,10 @@ nnoremap <leader>h :tabprevious<CR>
 nnoremap <leader>l :tabnext<CR>
 
 " go down or up 1 visual line on wrapped lines instead of line of file
-nnoremap j gj
-nnoremap k gk
+" Check the count to only do this without a count. (It will jump over wrapped
+" lines when you give a count)
+nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
+nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 nnoremap gj j
 nnoremap gk k
 
@@ -653,7 +715,7 @@ endfunction
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} set filetype=markdown
 
 " Treat JSON files like JavaScript
-au BufNewFile,BufRead *.json set ft=javascript
+au BufNewFile,BufRead *.json set ft=json
 
 
 """ Convenience mappings """
@@ -713,13 +775,30 @@ set pastetoggle=<F12>     " Toggle paste with <F12>
 map <leader>st :Startify<cr>
 map <leader>sT :tabe<cr>:Startify<cr>
 
+function! <SID>AutoProjectRootCD()
+  try
+    if &ft != 'help'
+        echo @%
+      ProjectRootCD
+    endif
+  catch
+    " Silently ignore invalid buffers
+  endtry
+endfunction
+
+autocmd VimEnter * call <SID>AutoProjectRootCD()
+" autocmd User StartifyReady call <SID>AutoProjectRootCD()
+
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
+
 " vp doesn't replace paste buffer
 function! RestoreRegister()
-  let @" = s:restore_reg
+  let @* = s:restore_reg
   return ''
 endfunction
 function! s:Repl()
-  let s:restore_reg = @"
+  let s:restore_reg = @*
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
