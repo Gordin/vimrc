@@ -391,11 +391,11 @@ au BufRead,BufNewFile *.py vnoremap <c-]> :CtrlPtjumpVisual<cr>
 au BufRead,BufNewFile *.py nnoremap <c-]> :CtrlPtjump<cr>
 
 
-au BufRead,BufNewFile *.ts vnoremap <leader>v :ALEGoToDefinitionIn -vsplit<cr>
+au BufRead,BufNewFile *.ts vnoremap <leader>v :ALEGoToDefinition -vsplit<cr>
 au BufRead,BufNewFile *.ts vnoremap <leader>t :ALEGoToDefinition -tab<cr>
 au BufRead,BufNewFile *.ts vnoremap <c-]> :ALEGoToDefinition<cr>
-au BufRead,BufNewFile *.ts nnoremap <leader>v :ALEGoToDefinitionIn -vsplit<cr>
-au BufRead,BufNewFile *.ts nnoremap <leader>t :ALEGoToDefinitionIn -tab<cr>
+au BufRead,BufNewFile *.ts nnoremap <leader>v :ALEGoToDefinition -vsplit<cr>
+au BufRead,BufNewFile *.ts nnoremap <leader>t :ALEGoToDefinition -tab<cr>
 au BufRead,BufNewFile *.ts nnoremap <c-]> :ALEGoToDefinition<cr>
 
 call plug#end()
