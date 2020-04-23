@@ -387,8 +387,16 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 
 let g:ctrlp_tjump_shortener = ['/home/.*/work/', '.../']
 "let g:ctrlp_tjump_only_silent = 1
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
+au BufRead,BufNewFile *.py vnoremap <c-]> :CtrlPtjumpVisual<cr>
+au BufRead,BufNewFile *.py nnoremap <c-]> :CtrlPtjump<cr>
+
+
+au BufRead,BufNewFile *.ts vnoremap <leader>v :ALEGoToDefinitionIn -vsplit<cr>
+au BufRead,BufNewFile *.ts vnoremap <leader>t :ALEGoToDefinition -tab<cr>
+au BufRead,BufNewFile *.ts vnoremap <c-]> :ALEGoToDefinition<cr>
+au BufRead,BufNewFile *.ts nnoremap <leader>v :ALEGoToDefinitionIn -vsplit<cr>
+au BufRead,BufNewFile *.ts nnoremap <leader>t :ALEGoToDefinitionIn -tab<cr>
+au BufRead,BufNewFile *.ts nnoremap <c-]> :ALEGoToDefinition<cr>
 
 call plug#end()
 
@@ -734,6 +742,7 @@ nnoremap Y y$
 " Yank to system Clipboard (Ctrl+c / Ctrl+v)
 nmap <leader>y "+y
 vmap <leader>y "+y
+vmap Y "+y
 
 " Edit vimrc and expand symlinks to the actual folder
 nnoremap <leader>vimrc :e <C-r>=resolve(expand("~/.vimrc"))<CR><CR>
