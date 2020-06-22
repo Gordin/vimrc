@@ -277,6 +277,12 @@ function! DeleteBrackets()
     let c = getline(".")[col(".") - 1]
     execute 'normal ds' . c
 endfunction
+nmap '` cs'`
+nmap `' cs`'
+nmap `" cs`"
+nmap "` cs"`
+nmap '" cs'"
+nmap "' cs"'
 
 Plug 'tpope/vim-surround'
 " Delete surrounding X => dsX
